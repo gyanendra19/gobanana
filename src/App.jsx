@@ -6,6 +6,7 @@ function App() {
   const [data, setData] = useState([])
   const [filter, setFilter] = useState('')
 
+  // Importing data from API
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
@@ -13,12 +14,14 @@ function App() {
   }, [])
 
   const filterData = () => {
+
     // Spreading the company and address data that are within objects
     const spreadData = data.map(user => {
       const { address, company, ...rest } = user
       return { ...rest, ...address, ...company }
     })
 
+    //Implementing Search Functionality
     if (filter === '') return spreadData
     const filteredData = spreadData.filter(user => Object.values(user).map(val => {
       console.log(val);
