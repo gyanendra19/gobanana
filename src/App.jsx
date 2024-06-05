@@ -24,7 +24,6 @@ function App() {
     //Implementing Search Functionality
     if (filter === '') return spreadData
     const filteredData = spreadData.filter(user => Object.values(user).map(val => {
-      console.log(val);
       if (typeof(val) === 'string') return val.toLowerCase()
       else return val
     }).includes(filter))
@@ -34,8 +33,8 @@ function App() {
 
   return (
     <>
-      <Box sx={{ width: '20%', margin: 'auto', paddingY: '20px' }} component="form">
-        <TextField sx={{ width: '300px' }} placeholder="Search for any Field" onChange={(e) => setFilter(e.target.value.toLowerCase())} value={filter} id="outlined-basic" label="Search" variant="outlined" />
+      <Box sx={{paddingY: '20px' }} component="form">
+        <TextField sx={{marginLeft: '20px', width: '300px' }} placeholder="Search for any Field" onChange={(e) => setFilter(e.target.value.toLowerCase())} value={filter} id="outlined-basic" label="Search" variant="outlined" />
       </Box>
 
       <TableContainer component={Paper}>
